@@ -9,6 +9,9 @@ This project were made to shows where and what are good to plant at Sao Paulo St
 - `scripts/activate` (if PowerShell does not able to run this command, run `Set-ExecutionPolicy Unrestricted -Scope Process`)
 - `cd ..`
 - `pip install flask`
-Always run inside (venv) environment
-- `py main.py`
+- `set FLASK_APP=main.py`
+- `$env:FLASK_APP="main.py"`
+- `flask run`
+
+Always run inside (venv)
 
