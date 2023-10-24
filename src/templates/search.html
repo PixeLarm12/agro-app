@@ -7,13 +7,16 @@
 </head>
 <body>
     <form action="/send-search" method="POST">
-        <select name="city" id="city">
-            <option value="" default>Selecione uma cidade</option>
-            
-            {% for city in cities %}
-                <option value="{{ city['id'] }}">{{ city['name'] }}</option>
-            {% endfor %}
-        </select>
+        {% if cities %}
+            <select name="city" id="city">
+                <option value="" default>Selecione uma cidade</option>
+                {% for city in cities %}
+                    <option value="{{ city['id'] }}">{{ city['nome'] }}</option>
+                {% endfor %}
+            </select>
+        {% else %}
+            <h3>Houve erro ao carregar as cidades...</h3>
+        {% endif %}
 
         <button type="submit">Enviar</button>
     </form>

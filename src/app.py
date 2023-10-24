@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from src.classes.IBGE import getCitiesByState
 
 app = Flask(__name__)
 
@@ -6,12 +7,6 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/search")
+@app.route("/search", methods=["GET"])
 def search():
-    cities = [
-        {"id": 1, "name": "Bauru"},
-        {"id": 22, "name": "Araraquara"},
-        {"id": 12, "name": "Jau"},
-    ]
-
-    return render_template("search.html", cities=cities)
+    return render_template("search.html", cities=getCitiesByState())
