@@ -7,11 +7,11 @@
 </head>
 <body>
     <form action="/send-search" method="POST">
-        {% if cities %}
+        {% if cultures %}
             <select name="city" id="city">
-                <option value="" default>Selecione uma cidade</option>
-                {% for city in cities %}
-                    <option value="{{ city['id'] }}">{{ city['nome'] }}</option>
+                <option value="" default>Selecione uma cultura</option>
+                {% for culture in cultures %}
+                    <option value="{{ culture['id'] }}">{{ culture['name'] }}</option>
                 {% endfor %}
             </select>
         {% else %}

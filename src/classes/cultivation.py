@@ -1,0 +1,23 @@
+def getTypesOfCulture():
+    return [
+        {"id": 1,  "name": "Feijão"},
+        {"id": 2,  "name": "Milho"},
+        {"id": 3,  "name": "Arroz"},
+        {"id": 4,  "name": "Café"},
+        {"id": 5,  "name": "Laranja"},
+        {"id": 6,  "name": "Limão"},
+        {"id": 7,  "name": "Banana"},
+        {"id": 8,  "name": "Abacaxi"},
+        {"id": 9,  "name": "Mandioca"},
+        {"id": 10, "name": "Batata"},
+        {"id": 11, "name": "Tomate"},
+        {"id": 12, "name": "Alface"},
+        {"id": 13, "name": "Cenoura"},
+        {"id": 14, "name": "Beterraba"},
+        {"id": 15, "name": "Chuchu"},
+        {"id": 16, "name": "Pimentão"},
+        {"id": 17, "name": "Cebola"},
+        {"id": 18, "name": "Pêssego"},
+        {"id": 19, "name": "Uva"},
+        {"id": 20, "name": "Maracujá"},
+    ]

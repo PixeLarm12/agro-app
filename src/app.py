@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from src.classes.IBGE import getCitiesByState
+from src.classes.cultivation import getTypesOfCulture
 
 app = Flask(__name__)
 
@@ -9,4 +9,4 @@ def index():
 
 @app.route("/search", methods=["GET"])
 def search():
-    return render_template("search.html", cities=getCitiesByState())
+    return render_template("search.html", cultures=getTypesOfCulture())
