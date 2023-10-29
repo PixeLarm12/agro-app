@@ -3,10 +3,10 @@
 {% block title %} Resultado das culturas {% endblock %}
 
 {% block content %}
-    <div class="flex flex-col justify-center content-center px-3">
+    <div class="flex flex-col justify-center content-center px-3 lg:items-center">
         <h1 class="text-3xl text-amber-400 pb-8 font-bold">Cultivar: <u class="uppercase font-bold">{{ culture["cultura"] }}</u></h1>
 
-        <div class="card-green">
+        <div class="card-green lg:w-1/2">
             <h3 class="text-amber-400 text-xl uppercase">Dados importantes:</h3>
             
             <ul>
@@ -16,7 +16,7 @@
             </ul>
         </div>
 
-        <div class="card-green mt-8" style="display: block !important;">
+        <div class="card-green lg:w-1/2 mt-8" style="display: block !important;">
             <h3 class="text-amber-400 text-xl uppercase">Cidades para plantio:</h3>
             
             {% for city in cities %}
