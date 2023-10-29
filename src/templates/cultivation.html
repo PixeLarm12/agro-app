@@ -3,27 +3,29 @@
 {% block title %} Resultado das culturas {% endblock %}
 
 {% block content %}
+    <div class="flex flex-col justify-center content-center px-3 lg:items-center">
+        <h1 class="text-3xl text-amber-400 pb-8 font-bold">Cultivar: <u class="uppercase font-bold">{{ culture["cultura"] }}</u></h1>
 
-    <h1>Deve-se plantar {{ culture["cultura"] }}</h1>
+        <div class="card-green lg:w-1/2">
+            <h3 class="text-amber-400 text-xl uppercase">Dados importantes:</h3>
+            
+            <ul>
+                <li class="text-gray-900 text-lg">Inicio do plantio: {{ culture["inicioPlantio"] }}</li>
+                <li class="text-gray-900 text-lg">Safra: {{ culture["safra"] }}</li>
+                <li class="text-gray-900 text-lg">Duracao do ciclo: {{ culture["ciclo"] }} dias</li>
+            </ul>
+        </div>
 
-    <p>
-        <h3>Dados importantes:</h3>
-        <ul>
-            <li>Inicio do plantio: {{ culture["inicioPlantio"] }}</li>
-            <li>Safra: {{ culture["safra"] }}</li>
-            <li>Duracao do ciclo: {{ culture["ciclo"] }} dias</li>
-        </ul>
-    </p>
-    <p>
-        <h3>Cidades habilitadas para o plantio:</h3>
-        
-        {% for city in cities %}
-            {% if loop.index != cities|length %}
-                <i>{{ city["nome"] }}, </i>
-            {% else %}
-                <i>{{ city["nome"] }} </i>
-            {% endif %}
-        {% endfor %}
-    </p>
-
+        <div class="card-green lg:w-1/2 mt-8" style="display: block !important;">
+            <h3 class="text-amber-400 text-xl uppercase">Cidades para plantio:</h3>
+            
+            {% for city in cities %}
+                {% if loop.index != cities|length %}
+                    <i class="text-lg text-gray-900">{{ city["nome"] }}, </i>
+                {% else %}
+                    <i class="text-lg text-gray-900">{{ city["nome"] }} </i>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

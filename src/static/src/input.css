@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.card-green {
+    @apply bg-emerald-900 bg-opacity-60 flex flex-col justify-center content-center p-6 rounded-md shadow-md;
+}
+
+.button-default { 
+    @apply bg-amber-400 px-8 py-4 mt-8 rounded-md text-gray-600 font-bold;
+}
