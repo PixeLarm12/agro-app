@@ -8,10 +8,10 @@
 <body>
     <form action="/send-search" method="POST">
         {% if cultures %}
-            <select name="city" id="city">
+            <select name="cultureId" id="cultureId">
                 <option value="" default>Selecione uma cultura</option>
                 {% for culture in cultures %}
-                    <option value="{{ culture['id'] }}">{{ culture['name'] }}</option>
+                    <option value="{{ culture['id'] }}">{{ culture['cultura'] }}</option>
                 {% endfor %}
             </select>
         {% else %}
