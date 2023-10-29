@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O que plantar?</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Resultado das culturas {% endblock %}
+
+{% block content %}
+
     <h1>Deve-se plantar {{ culture["cultura"] }}</h1>
 
     <p>
@@ -19,6 +16,7 @@
     </p>
     <p>
         <h3>Cidades habilitadas para o plantio:</h3>
+        
         {% for city in cities %}
             {% if loop.index != cities|length %}
                 <i>{{ city["nome"] }}, </i>
@@ -27,5 +25,5 @@
             {% endif %}
         {% endfor %}
     </p>
-</body>
-</html>
+
+{% endblock %}
