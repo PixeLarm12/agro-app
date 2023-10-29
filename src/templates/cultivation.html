@@ -7,7 +7,25 @@
     <title>O que plantar?</title>
 </head>
 <body>
-    <h1>Descubra onde é o melhor lugar para plantar:</h1>
-    <h1>Descubra quando é o melhor período para plantar:</h1>
+    <h1>Deve-se plantar {{ culture["cultura"] }}</h1>
+
+    <p>
+        <h3>Dados importantes:</h3>
+        <ul>
+            <li>Inicio do plantio: {{ culture["inicioPlantio"] }}</li>
+            <li>Safra: {{ culture["safra"] }}</li>
+            <li>Duracao do ciclo: {{ culture["ciclo"] }} dias</li>
+        </ul>
+    </p>
+    <p>
+        <h3>Cidades habilitadas para o plantio:</h3>
+        {% for city in cities %}
+            {% if loop.index != cities|length %}
+                <i>{{ city["nome"] }}, </i>
+            {% else %}
+                <i>{{ city["nome"] }} </i>
+            {% endif %}
+        {% endfor %}
+    </p>
 </body>
 </html>

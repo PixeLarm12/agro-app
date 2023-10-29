@@ -11,11 +11,11 @@
             <select name="cultureId" id="cultureId">
                 <option value="" default>Selecione uma cultura</option>
                 {% for culture in cultures %}
-                    <option value="{{ culture['id'] }}">{{ culture['cultura'] }}</option>
+                    <option value="{{ culture['idCultura'] }}">{{ culture['cultura'] }}</option>
                 {% endfor %}
             </select>
         {% else %}
-            <h3>Houve erro ao carregar as cidades...</h3>
+            <h3>Houve erro: {{ errors["message"] }}</h3>
         {% endif %}
 
         <button type="submit">Enviar</button>
