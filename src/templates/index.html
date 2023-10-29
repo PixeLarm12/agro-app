@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 
-{% block title %} Página Inicial {% endblock %}
+{% block title %} Página inicial {% endblock %}
 
 {% block content %}
-
-    <div class="w-full">
-        <h1>Bem vindo a pagina inicial!</h1>
-        <a href="/search">Consultar dados</a>
+    <div class="self-center flex flex-col justify-center items-center content-center">
+        <h1 class="text-amber-400 font-bold text-3xl">BEM-VINDO (A)!</h1>
+        <a class="bg-amber-400 px-8 py-4 mt-8 rounded-md text-gray-600 font-bold" href="/search">COMEÇAR PESQUISA</a>
     </div>
-
 {% endblock %}
