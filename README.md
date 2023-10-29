@@ -8,6 +8,7 @@ This project were made to shows where and what are good to plant at Sao Paulo St
 - Create folder named `venv`
 - `cd venv`
 - `scripts/activate` (if PowerShell does not able to run this command, run `Set-ExecutionPolicy Unrestricted -Scope Process`)
+- `pip install python-dotenv`
 - `cd ..`
 - `pip install flask`
 - `set FLASK_APP=main.py`
@@ -21,6 +22,7 @@ Always run inside (venv)
 - `python3 -m venv venv`
 - `cd venv`
 - `. bin/activate`
+- `pip install python-dotenv`
 - `cd ..`
 - `pip install flask`
 - `pip install requests`
