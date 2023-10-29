@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procura</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block title %} Pesquisar cultura {% endblock %}
+
+{% block content %}
     <form action="/send-search" method="POST">
-        {% if cities %}
-            <select name="city" id="city">
-                <option value="" default>Selecione uma cidade</option>
-                {% for city in cities %}
-                    <option value="{{ city['id'] }}">{{ city['nome'] }}</option>
+        {% if cultures %}
+            <select name="cultureId" id="cultureId">
+                <option value="" default>Selecione uma cultura</option>
+                {% for culture in cultures %}
+                    <option value="{{ culture['idCultura'] }}">{{ culture['cultura'] }}</option>
                 {% endfor %}
             </select>
         {% else %}
-            <h3>Houve erro ao carregar as cidades...</h3>
+            <h3>Houve erro: {{ errors["message"] }}</h3>
         {% endif %}
 
         <button type="submit">Enviar</button>
     </form>
-</body>
-</html>
+{% endblock %}
