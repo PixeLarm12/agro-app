@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-from src.classes.cultivation import getCulturesFromApi, getCultivationByCultureId
-from src.classes.agritecApi import CidadesPorCultura
+from src.classes.Controller import getCulturesFromApi, getCultivationByCultureId
 
 app = Flask(__name__)
 
