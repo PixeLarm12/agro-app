@@ -4,18 +4,15 @@ def Cultures():
     return cultures()
 
 def getCultureById(id):
-    cultures = cultures()
-
-    for culture in cultures:
+    for culture in cultures():
         if int(culture["id"]) == int(id):
             return culture
     return None
 
 def citiesByCulture(id):
-    relationship = cities_cultures()
     cities = []
 
-    for row in relationship:
+    for row in cities_cultures():
         if int(row["culture_id"]) == int(id):
             cities.append(row)
 
