@@ -20,5 +20,5 @@ def citiesByCulture(id):
     for city in cities():
         if int(city["id"]) in citiesIds:
             data.append(city)
-
+            
     return data
