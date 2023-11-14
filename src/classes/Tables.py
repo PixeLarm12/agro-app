@@ -14,6 +14,12 @@ def cultures():
         {"id": 12, "name": "Repolho", "period": ""},
         {"id": 13, "name": "Café", "period": ""},
         {"id": 14, "name": "Manga", "period": ""},
+        {"id": 15, "name": "Pêssego", "period": ""}, 
+        {"id": 16, "name": "Limão", "period": ""}, 
+        {"id": 17, "name": "Feijão", "period": ""}, 
+        {"id": 18, "name": "Hortelã", "period": ""}, 
+        {"id": 19, "name": "Alface", "period": ""}, 
+        {"id": 20, "name": "Amendoim", "period": ""}, 
     ]
 
 def cities():
@@ -73,6 +79,9 @@ def cities():
         {"id": 53, "name": "Adamantina", "state": "SP"},
         {"id": 54, "name": "Santo Anastácio", "state": "SP"},
         {"id": 55, "name": "Mirante do Paranapanema", "state": "SP"},
+        {"id": 56, "name": "Bragança paulista", "state": "SP"},
+        {"id": 57, "name": "Piedade", "state": "SP"},
+        {"id": 58, "name": "Ibiúna", "state": "SP"},
     ]
 
 def cities_cultures():
@@ -184,4 +193,22 @@ def cities_cultures():
         {"id": 105, "city_id": 40, "culture_id": 14},
         {"id": 106, "city_id": 41, "culture_id": 14},
         {"id": 107, "city_id": 42, "culture_id": 14},
+        {"id": 107, "city_id": 7, "culture_id": 15},
+        {"id": 107, "city_id": 11, "culture_id": 15},
+        {"id": 107, "city_id": 56, "culture_id": 15},
+        {"id": 107, "city_id": 42, "culture_id": 16},
+        {"id": 107, "city_id": 47, "culture_id": 16},
+        {"id": 107, "city_id": 38, "culture_id": 16},
+        {"id": 107, "city_id": 14, "culture_id": 16},
+        {"id": 107, "city_id": 40, "culture_id": 16},
+        {"id": 107, "city_id": 7, "culture_id": 17},
+        {"id": 107, "city_id": 38, "culture_id": 17},
+        {"id": 107, "city_id": 9, "culture_id": 17},
+        {"id": 107, "city_id": 2, "culture_id": 18},
+        {"id": 107, "city_id": 19, "culture_id": 18},
+        {"id": 107, "city_id": 11, "culture_id": 18},
+        {"id": 107, "city_id": 57, "culture_id": 19},
+        {"id": 107, "city_id": 58, "culture_id": 19},
+        {"id": 107, "city_id": 35, "culture_id": 20},
+        {"id": 107, "city_id": 40, "culture_id": 20},
     ]
