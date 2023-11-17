@@ -26,9 +26,19 @@
             {% endfor %}
         </div>
 
-        <div class="flex flex-col justify-end">
-            <div class="w-24 h-24">
+        <div class="flex flex-row justify-between content-center">
+            <div class="flex flex-col justify-center content-center items-center">
                 {% include 'map.html' %}
+            </div>
+
+            <div class="flex flex-col justify-center content-center items-center">
+                {% for city in cities %}
+                    {% set keyName = city["slug"] + "-card" %}
+                    <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-36 h-32 bg-emerald-600 bg-opacity-90 justify-center content-center rounded-md shadow-lg items-center">
+                        <h1 class="text-amber-400 break-all mx-2"> Você está vendo a cidade de: </h1><br>
+                        <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">{{ city["name"] }}</h2>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
@@ -36,10 +46,22 @@
     <script>
         var cities = {{cities|tojson}};
 
-        for(var i=0; i<cities.length; i++) {
-            var el = `#mun_${cities[i].code}`;
+        cities.forEach(city => {
+            cityElement = document.querySelector(`#mun_${city.code}`);
 
-            document.querySelector(el).style.fill = 'red';
-        }
+            if(cityElement) {
+                cityElement.style.fill = 'red';
+                
+                cityElement.onmouseover = function() {    
+                    cityCard = document.getElementById(`${city.slug}-card`);
+                    cityCard.style.display = "flex";
+                }
+
+                cityElement.onmouseout = function() {
+                    cityCard = document.getElementById(`${city.slug}-card`);
+                    cityCard.style.display = "none";
+                }
+            }
+        });
     </script>
 {% endblock %}
