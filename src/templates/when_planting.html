@@ -25,5 +25,21 @@
                 {% endif %}
             {% endfor %}
         </div>
+
+        <div class="flex flex-col justify-end">
+            <div class="w-24 h-24">
+                {% include 'map.html' %}
+            </div>
+        </div>
     </div>
+
+    <script>
+        var cities = {{cities|tojson}};
+
+        for(var i=0; i<cities.length; i++) {
+            var el = `#mun_${cities[i].code}`;
+
+            document.querySelector(el).style.fill = 'red';
+        }
+    </script>
 {% endblock %}
