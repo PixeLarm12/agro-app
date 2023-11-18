@@ -7,8 +7,8 @@ This project were made to shows where and what are good to plant at Sao Paulo St
 ### On Windows (some lib, require install once and NodeJS are require to run NPM commands):
 - `npm install -D tailwindcss`
 - `npx tailwindcss init`
-- Create folder named `venv`
 - `npm run buildcss`
+- `python -m venv venv`
 - `cd venv`
 - `scripts/activate` (if PowerShell does not able to run this command, run `Set-ExecutionPolicy Unrestricted -Scope Process`)
 - `cd ..`
