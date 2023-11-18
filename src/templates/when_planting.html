@@ -3,42 +3,53 @@
 {% block title %} Resultado das culturas {% endblock %}
 
 {% block content %}
-    <div class="flex flex-col justify-center content-center px-3 lg:items-center">
+    <div class="flex flex-col justify-center content-center px-2 lg:items-center">
         <h1 class="text-3xl text-amber-400 pb-8 font-bold">Cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        
+        <div class="grid grid-cols-12 gap-4 place-items-center place-content-center lg:w-3/4 w-full">
+            <!-- Left card -->
+            <div class="lg:col-span-3 col-span-12 w-full h-full">
+                <div class="w-full lg:h-1/2 h-full lg:pt-0 pt-2">
+                    <div class="card-green h-full">
+                        <h3 class="text-amber-400 text-xl uppercase">Dados importantes:</h3>
+                    
+                        <ul>
+                            <li class="text-gray-900 text-lg">Inicio do plantio: {{ culture["period"] }}</li>
+                        </ul>
+                        
+                        <h3 class="text-amber-400 text-xl uppercase">Cidades para plantio:</h3>
+                    
+                        {% for city in cities %}
+                            {% if loop.index != cities|length %}
+                                <i class="text-lg text-gray-900">{{ city["name"] }}, </i>
+                            {% else %}
+                                <i class="text-lg text-gray-900">{{ city["name"] }} </i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
 
-        <div class="card-green lg:w-1/2">
-            <h3 class="text-amber-400 text-xl uppercase">Dados importantes:</h3>
-            
-            <ul>
-                <li class="text-gray-900 text-lg">Inicio do plantio: {{ culture["period"] }}</li>
-            </ul>
-        </div>
-
-        <div class="card-green lg:w-1/2 mt-8" style="display: block !important;">
-            <h3 class="text-amber-400 text-xl uppercase">Cidades para plantio:</h3>
-            
-            {% for city in cities %}
-                {% if loop.index != cities|length %}
-                    <i class="text-lg text-gray-900">{{ city["name"] }}, </i>
-                {% else %}
-                    <i class="text-lg text-gray-900">{{ city["name"] }} </i>
-                {% endif %}
-            {% endfor %}
-        </div>
-
-        <div class="flex flex-row justify-between content-center">
-            <div class="flex flex-col justify-center content-center items-center">
-                {% include 'map.html' %}
+                <div class="w-full lg:h-1/2 h-2/3 pt-2">
+                    <div class="card-green h-full">
+                        {% for city in cities %}
+                            {% set keyName = city["slug"] + "-card" %}
+                            <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                <h1 class="text-amber-400 break-all mx-2"> Você está vendo a cidade de: </h1><br>
+                                <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">{{ city["name"] }}</h2>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
             </div>
 
-            <div class="flex flex-col justify-center content-center items-center">
-                {% for city in cities %}
-                    {% set keyName = city["slug"] + "-card" %}
-                    <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-36 h-32 bg-emerald-600 bg-opacity-90 justify-center content-center rounded-md shadow-lg items-center">
-                        <h1 class="text-amber-400 break-all mx-2"> Você está vendo a cidade de: </h1><br>
-                        <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">{{ city["name"] }}</h2>
+            <div class="lg:col-span-9 col-span-12 w-full h-full lg:pt-0 pt-48">
+                <!-- Right card -->
+                <div class="card-green w-full">
+                    <h1 class="lg:text-3xl text-xl text-amber-400 pb-2 font-bold">Cidades em São Paulo para o plantio:</h1>
+                    <div class="flex flex-row justify-between content-center">
+                        {% include 'map.html' %}
                     </div>
-                {% endfor %}
+                </div>
             </div>
         </div>
     </div>
