@@ -21,9 +21,9 @@
                     
                         {% for city in cities %}
                             {% if loop.index != cities|length %}
-                                <i class="text-lg text-gray-900">{{ city["name"] }}, </i>
+                                <i class="text-sm text-gray-900">{{ city["name"] }}, </i>
                             {% else %}
-                                <i class="text-lg text-gray-900">{{ city["name"] }} </i>
+                                <i class="text-sm text-gray-900">{{ city["name"] }} </i>
                             {% endif %}
                         {% endfor %}
                     </div>
