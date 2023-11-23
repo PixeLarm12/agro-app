@@ -12,7 +12,7 @@
                         <label for="cultureId" class="font-bold text-xl pl-1 text-amber-400">Selecione uma cultura:</label>
                         <select name="cultureId" id="cultureId" size="10" class="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg w-full p-2.5">
                             {% for culture in cultures %}
-                                <option value="{{ culture['id'] }}">{{ culture['id'] }} - {{ culture['name'] }}</option>
+                                <option value="{{ culture['id'] }}">{{ culture['name'] }}</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -24,7 +24,7 @@
             </form>
         {% else %}
             <div class="flex flex-col justify-center items-center content-center">
-                <h3 class="text-xl text-amber-400 underline break-words">Houve erro: Mensagem de erro gigantesca</h3>
+                <h3 class="text-xl text-amber-400 underline break-words">Houve erro: {{ errors }}</h3>
                 <a class="button-default" href="/">VOLTAR</a>
             </div>
         {% endif %}
