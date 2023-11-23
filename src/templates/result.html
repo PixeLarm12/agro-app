@@ -53,20 +53,26 @@
             cityElement = document.querySelector(`#mun_${city.code}`);
 
             if(cityElement) {
-                cityElement.style.fill = 'red';
+                cityElement.style.fill = '#dc2626';
                 defaultCard = document.getElementById("defaultCityCard");
-                
-                cityElement.onmouseover = function() {    
-                    cityCard = document.getElementById(`${city.slug}-card`);
-                    cityCard.style.display = "flex";
-                    defaultCard.style.display = "none";
-                }
 
-                cityElement.onmouseout = function() {
+                 cityElement.onclick = function() {
+                    cities.forEach(cityData => {
+                        cityElement = document.querySelector(`#mun_${cityData.code}`);
+                        cityCard = document.getElementById(`${cityData.slug}-card`);
+                        
+                        if(cityElement) {
+                            cityElement.style.fill = '#dc2626';
+                            cityCard.style.display = 'none';
+                        }
+                    });
+
                     cityCard = document.getElementById(`${city.slug}-card`);
-                    cityCard.style.display = "none";
-                    defaultCard.style.display = "flex";
-                }
+
+                    this.style.fill = '#fbbf24'; 
+                    cityCard.style.display = 'flex';
+                    defaultCard.style.display = 'none';
+                 }
             }
         });
     </script>
