@@ -4,13 +4,17 @@
 
 {% block content %}
     <div class="flex flex-col justify-center content-center px-2 lg:items-center">
-        <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        {% if culture %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        {% else %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Veja todas as cidades para plantio no período selecionado</u></h1>
+        {% endif %}
         
         <div class="grid grid-cols-12 gap-4 place-items-center place-content-center lg:w-3/4 w-full">
             <div class="col-span-12 lg:col-span-6 md:col-span-6 w-full h-full">
                 <div class="w-full h-full flex flex-col justify-center content-center items-center">
                     <div class="card-green w-full">
-                        <h1 class="lg:text-2xl xl:text-3xl text-xl text-amber-400 pb-2 font-bold">Cidades em São Paulo para o plantio:</h1>
+                        <h1 class="text-xl xl:text-2xl text-amber-400 pb-2 font-bold">Cidades em São Paulo para o plantio:</h1>
                         <div class="flex flex-row justify-between content-center">
                             {% include 'map.html' %}
                         </div>
@@ -20,26 +24,51 @@
 
             <div class="col-span-12 lg:col-span-6 md:col-span-6 w-full h-full">
                 <div class="card-green h-full">
-                    <h3 class="text-amber-400 text-xl xl:text-2xl uppercase">Dados importantes:</h3>
+                    <h3 class="text-amber-400 font-bold text-xl xl:text-2xl">Dados importantes:</h3>
                 
                     <ul>
-                        <li class="text-white text-lg">Inicio do plantio: <u>{{ culture["period"] }}</u></li>
+                        <li class="text-white text-lg">Inicio do plantio: <u>{{ period }}</u></li>
                     </ul>
 
                     <div class="w-full h-full pt-2">
-                        <div class="card-green h-full">
-                            <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
-                                <h1 class="text-amber-400 break-words mx-2"> Selecione uma cidade destacada para ver seu </h1><br>
-                                <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">NOME</h2>
-                            </div>
-                            {% for city in cities %}
+                        {% if cities|length > 0 %}
+                            <div class="card-green h-full">
+                                <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                    <b class="uppercase text-amber-400">Selecione uma cidade:</b><br>
+                                    <p class="text-white break-words normal-case">
+                                        Clique sobre uma cidade para ver detalhes
+                                    </p>
+                                </div>
+                                {% for city in cities %}
                                 {% set keyName = city["slug"] + "-card" %}
                                 <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
-                                    <h1 class="text-amber-400 break-all mx-2"> Você está vendo a cidade de: </h1><br>
-                                    <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">{{ city["name"] }}</h2>
+                                    <b class="uppercase text-amber-400">{{ city["name"] }}</b><br>
+                                    <p class="text-white break-words normal-case">
+                                        {% if city["cultures"]|length > 0 %}
+                                            {% for cityCultures in city["cultures"] %}
+                                                {% if loop.index == city["cultures"]|length %}
+                                                    {{ cityCultures["name"] }}
+                                                {% else %}
+                                                    {{ cityCultures["name"] }},
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            Tempo de plantio: {{ city["period"] }}
+                                        {% endif %}
+                                    </p>
                                 </div>
-                            {% endfor %}
-                        </div>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            <div class="card-green h-full">
+                                <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                    <b class="uppercase text-amber-400">Ops...</b><br>
+                                    <p class="text-white break-words normal-case">
+                                        Parece que a cultura que selecionou e o período não coincidem com nenhuma das cidades disponíveis.
+                                    </p>
+                                </div>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
