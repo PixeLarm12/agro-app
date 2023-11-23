@@ -538,11 +538,6 @@ video {
   grid-column: span 12 / span 12;
 }
 
-.mx-2 {
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
-}
-
 .block {
   display: block;
 }
@@ -756,6 +751,10 @@ video {
   text-transform: uppercase;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
 .normal-case {
   text-transform: none;
 }
@@ -815,11 +814,6 @@ video {
 @media (min-width: 768px) {
   .md\:col-span-6 {
     grid-column: span 6 / span 6;
-  }
-
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
   }
 }
 
