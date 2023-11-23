@@ -11,15 +11,18 @@
                     <div class="lg:col-span-6 col-span-12">
                         <label for="cultureId" class="font-bold text-xl pl-1 text-amber-400">Selecione uma cultura:</label>
                         <select name="cultureId" id="cultureId" size="10" class="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg w-full p-2.5">
+                            <option value="" default>Selecione (deixe vazio para filtrar apenas por período)</option>
+                            
                             {% for culture in cultures %}
-                                <option class="capitalize" value="{{ culture['id'] }}">{{ loop.index }} - {{ culture['name'] }} (período de plantio: {{ culture['period'] }})</option>
+                            <option class="capitalize" value="{{ culture['id'] }}">{{ loop.index }} - {{ culture['name'] }} (período de plantio: {{ culture['period'] }})</option>
                             {% endfor %}
                         </select>
                     </div>
-
+                    
                     <div class="lg:col-span-6 col-span-12">
                         <label for="period" class="font-bold text-xl pl-1 text-amber-400">Selecione um período:</label>
                         <select name="period" id="period" size="10" class="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg w-full p-2.5">
+                            <option value="" default>Selecione um período...</option>
                             <option value="ano todo">Ano todo</option>
                             <option value="janeiro">Janeiro</option>
                             <option value="fevereiro">Fevereiro</option>

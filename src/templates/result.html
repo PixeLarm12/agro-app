@@ -4,7 +4,11 @@
 
 {% block content %}
     <div class="flex flex-col justify-center content-center px-2 lg:items-center">
-        <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        {% if culture %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        {% else %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Veja todas as cidades para plantio no período selecionado</u></h1>
+        {% endif %}
         
         <div class="grid grid-cols-12 gap-4 place-items-center place-content-center lg:w-3/4 w-full">
             <div class="col-span-12 lg:col-span-6 md:col-span-6 w-full h-full">
@@ -23,7 +27,7 @@
                     <h3 class="text-amber-400 text-xl xl:text-2xl uppercase">Dados importantes:</h3>
                 
                     <ul>
-                        <li class="text-white text-lg">Inicio do plantio: <u>{{ culture["period"] }}</u></li>
+                        <li class="text-white text-lg">Inicio do plantio: <u>{{ period }}</u></li>
                     </ul>
 
                     <div class="w-full h-full pt-2">
