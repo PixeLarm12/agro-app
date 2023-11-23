@@ -7,6 +7,20 @@ def Cultures():
 
     return data
 
+def getCulturesByCity(cityId):
+    data = []
+
+    if(cityId): 
+        for el in cities_cultures():
+            if int(el["city_id"]) == int(cityId):
+                culture = getCultureById(el["culture_id"])
+                if(culture): 
+                    data.append(culture)
+
+        return data
+    else:
+        return None
+
 def getCityById(id):
     for city in cities():
         if int(city["id"]) == int(id):
@@ -42,11 +56,15 @@ def filterCities(cultureId, period):
         for row in cities_cultures():
             if (int(row["culture_id"]) == int(cultureId) and row["period"].find(period) != -1):
                 city = getCityById(row["city_id"])
-                data.append({"id": city["id"], "slug": city["slug"], "name": city["name"], "state": city["state"], "code": city["code"], "period": row["period"]})
+                if(city):
+                    data.append({"id": city["id"], "slug": city["slug"], "name": city["name"], "state": city["state"], "code": city["code"], "period": row["period"], "cultures": []})
+    # filtering all cultures by city
     else:
         for row in cities_cultures():
             if (row["period"].find(period) != -1):
                 city = getCityById(row["city_id"])
-                data.append({"id": city["id"], "slug": city["slug"], "name": city["name"], "state": city["state"], "code": city["code"], "period": row["period"]})
+                cultures = getCulturesByCity(city["id"])
+                if(city):
+                    data.append({"id": city["id"], "slug": city["slug"], "name": city["name"], "state": city["state"], "code": city["code"], "period": row["period"], "cultures": cultures})
 
     return data

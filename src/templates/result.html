@@ -44,7 +44,17 @@
                                 <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
                                     <b class="uppercase text-amber-400">{{ city["name"] }}</b><br>
                                     <p class="text-white break-words normal-case">
-                                        Tempo de plantio: {{ city["period"] }}
+                                        {% if city["cultures"]|length > 0 %}
+                                            {% for cityCultures in city["cultures"] %}
+                                                {% if loop.index == city["cultures"]|length %}
+                                                    {{ cityCultures["name"] }}
+                                                {% else %}
+                                                    {{ cityCultures["name"] }},
+                                                {% endif %}
+                                            {% endfor %}
+                                        {% else %}
+                                            Tempo de plantio: {{ city["period"] }}
+                                        {% endif %}
                                     </p>
                                 </div>
                                 {% endfor %}
