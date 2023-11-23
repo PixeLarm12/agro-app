@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %} Resultado das culturas {% endblock %}
+
+{% block content %}
+    <div class="flex flex-col justify-center content-center px-2 lg:items-center">
+        <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
+        
+        <div class="grid grid-cols-12 gap-4 place-items-center place-content-center lg:w-3/4 w-full">
+            <div class="col-span-12 lg:col-span-6 md:col-span-6 w-full h-full">
+                <div class="w-full h-full flex flex-col justify-center content-center items-center">
+                    <div class="card-green w-full">
+                        <h1 class="lg:text-2xl xl:text-3xl text-xl text-amber-400 pb-2 font-bold">Cidades em São Paulo para o plantio:</h1>
+                        <div class="flex flex-row justify-between content-center">
+                            {% include 'map.html' %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-span-12 lg:col-span-6 md:col-span-6 w-full h-full">
+                <div class="card-green h-full">
+                    <h3 class="text-amber-400 text-xl xl:text-2xl uppercase">Dados importantes:</h3>
+                
+                    <ul>
+                        <li class="text-white text-lg">Inicio do plantio: <u>{{ culture["period"] }}</u></li>
+                    </ul>
+
+                    <div class="w-full h-full pt-2">
+                        <div class="card-green h-full">
+                            <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                <h1 class="text-amber-400 break-words mx-2"> Selecione uma cidade destacada para ver seu </h1><br>
+                                <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">NOME</h2>
+                            </div>
+                            {% for city in cities %}
+                                {% set keyName = city["slug"] + "-card" %}
+                                <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                    <h1 class="text-amber-400 break-all mx-2"> Você está vendo a cidade de: </h1><br>
+                                    <h2 class="uppercase font-bold text-amber-400 underline md:text-xl text-lg">{{ city["name"] }}</h2>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var cities = {{cities|tojson}};
+
+        cities.forEach(city => {
+            cityElement = document.querySelector(`#mun_${city.code}`);
+
+            if(cityElement) {
+                cityElement.style.fill = 'red';
+                defaultCard = document.getElementById("defaultCityCard");
+                
+                cityElement.onmouseover = function() {    
+                    cityCard = document.getElementById(`${city.slug}-card`);
+                    cityCard.style.display = "flex";
+                    defaultCard.style.display = "none";
+                }
+
+                cityElement.onmouseout = function() {
+                    cityCard = document.getElementById(`${city.slug}-card`);
+                    cityCard.style.display = "none";
+                    defaultCard.style.display = "flex";
+                }
+            }
+        });
+    </script>
+{% endblock %}

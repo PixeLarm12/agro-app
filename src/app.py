@@ -17,7 +17,7 @@ def sendSearch():
         cultureId = request.form.get("cultureId")
         
         if(cultureId):
-            return render_template("when_planting.html", culture=getCultureById(cultureId), cities=citiesByCulture(cultureId))
+            return render_template("result.html", culture=getCultureById(cultureId), cities=citiesByCulture(cultureId))
         
         errors = {
             "message": "Houve erro ao ler o campos do formulário!"

@@ -1,7 +1,11 @@
 from src.classes.Tables import *
+import operator
 
 def Cultures():
-    return cultures()
+    data = cultures()
+    data.sort(key=operator.itemgetter('name'))
+
+    return data
 
 def getCultureById(id):
     for culture in cultures():
