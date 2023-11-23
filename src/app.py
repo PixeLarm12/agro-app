@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from src.classes.Database import getCultureById, citiesByCulture, Cultures
+from src.classes.Database import getCultureById, filterCities, Cultures
 
 app = Flask(__name__)
 
@@ -15,9 +15,10 @@ def search():
 def sendSearch():
     if request.method == "POST":
         cultureId = request.form.get("cultureId")
+        period = request.form.get("period")
         
         if(cultureId):
-            return render_template("result.html", culture=getCultureById(cultureId), cities=citiesByCulture(cultureId))
+            return render_template("result.html", culture=getCultureById(cultureId), cities=filterCities(cultureId, period))
         
         errors = {
             "message": "Houve erro ao ler o campos do formulário!"
