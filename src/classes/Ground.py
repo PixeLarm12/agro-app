@@ -16,7 +16,7 @@ def GroundTypes():
         {"id": 14, "title": "Latossolo Bruno"},
         {"id": 15, "title": "Latossolo Vermelho-Amarelo"},
         {"id": 16, "title": "Latossolo Vermelho"},
-        {"id": 17, "title": "Luvissolos Háplico"},
+        {"id": 17, "title": "Luvissolo Háplico"},
         {"id": 18, "title": "Neossolo Flúvico"},
         {"id": 19, "title": "Neossolo Litólico"},
         {"id": 20, "title": "Neossolo Quartzarênico"},
@@ -25,6 +25,56 @@ def GroundTypes():
         {"id": 23, "title": "Organossolo Tiomórfico"},
         {"id": 24, "title": "Planossolo Háplico"},
         {"id": 25, "title": "Plintossolo Pétrico"},
+    ]
+
+def GroundCultures():
+    return [        
+        { "id": 1, "culture_id": 1, "ground_id": 18}, 
+        { "id": 2, "culture_id": 1, "ground_id": 9}, 
+        { "id": 3, "culture_id": 2, "ground_id": 15}, 
+        { "id": 4, "culture_id": 2, "ground_id": 16}, 
+        { "id": 5, "culture_id": 3, "ground_id": 10}, 
+        { "id": 6, "culture_id": 3, "ground_id": 18}, 
+        { "id": 7, "culture_id": 4, "ground_id": 13}, 
+        { "id": 8, "culture_id": 4, "ground_id": 14}, 
+        { "id": 9, "culture_id": 5, "ground_id": 16}, 
+        { "id": 10, "culture_id": 5, "ground_id": 3},
+        { "id": 11, "culture_id": 5, "ground_id": 4}, 
+        { "id": 12, "culture_id": 6, "ground_id": 16}, 
+        { "id": 13, "culture_id": 6, "ground_id": 5}, 
+        { "id": 14, "culture_id": 7, "ground_id": 5}, 
+        { "id": 15, "culture_id": 7, "ground_id": 6}, 
+        { "id": 16, "culture_id": 7, "ground_id": 18}, 
+        { "id": 17, "culture_id": 8, "ground_id": 18}, 
+        { "id": 18, "culture_id": 8, "ground_id": 9}, 
+        { "id": 19, "culture_id": 9, "ground_id": 18}, 
+        { "id": 20, "culture_id": 9, "ground_id": 9}, 
+        { "id": 21, "culture_id": 10, "ground_id": 9}, 
+        { "id": 22, "culture_id": 10, "ground_id": 22}, 
+        { "id": 23, "culture_id": 11, "ground_id": 16},
+        { "id": 24, "culture_id": 11, "ground_id": 3},
+        { "id": 25, "culture_id": 11, "ground_id": 4}, 
+        { "id": 26, "culture_id": 12, "ground_id": 16},
+        { "id": 27, "culture_id": 12, "ground_id": 3}, 
+        { "id": 28, "culture_id": 13, "ground_id": 15},
+        { "id": 29, "culture_id": 13, "ground_id": 16}, 
+        { "id": 30, "culture_id": 14, "ground_id": 5,}
+        { "id": 31, "culture_id": 14, "ground_id": 6,}
+        { "id": 32, "culture_id": 14, "ground_id": 18}, 
+        { "id": 33, "culture_id": 15, "ground_id": 5,}
+        { "id": 34, "culture_id": 15, "ground_id": 18}, 
+        { "id": 35, "culture_id": 16, "ground_id": 5,}
+        { "id": 36, "culture_id": 16, "ground_id": 6,}
+        { "id": 37, "culture_id": 16, "ground_id": 18}, 
+        { "id": 38, "culture_id": 17, "ground_id": 16},
+        { "id": 39, "culture_id": 17, "ground_id": 3},
+        { "id": 40, "culture_id": 17, "ground_id": 4}, 
+        { "id": 41, "culture_id": 18, "ground_id": 10},
+        { "id": 42, "culture_id": 18, "ground_id": 18}, 
+        { "id": 43, "culture_id": 19, "ground_id": 15},
+        { "id": 44, "culture_id": 19, "ground_id": 16}, 
+        { "id": 45, "culture_id": 20, "ground_id": 16},
+        { "id": 46, "culture_id": 20, "ground_id": 3}, 
     ]
 
 def GroundCities():
