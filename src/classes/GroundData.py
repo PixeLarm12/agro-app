@@ -1,4 +1,4 @@
-def GroundTypes():
+def getGroundsData():
     return [
         {"id": 1, "title": "Afloramento Rochoso"},
         {"id": 2, "title": "Argissolo Amarelo"},
@@ -27,8 +27,8 @@ def GroundTypes():
         {"id": 25, "title": "Plintossolo Pétrico"},
     ]
 
-def GroundCultures():
-    return [        
+def getCulturesGroundData():
+    return [
         { "id": 1, "culture_id": 1, "ground_id": 18}, 
         { "id": 2, "culture_id": 1, "ground_id": 9}, 
         { "id": 3, "culture_id": 2, "ground_id": 15}, 
@@ -58,13 +58,13 @@ def GroundCultures():
         { "id": 27, "culture_id": 12, "ground_id": 3}, 
         { "id": 28, "culture_id": 13, "ground_id": 15},
         { "id": 29, "culture_id": 13, "ground_id": 16}, 
-        { "id": 30, "culture_id": 14, "ground_id": 5,}
-        { "id": 31, "culture_id": 14, "ground_id": 6,}
+        { "id": 30, "culture_id": 14, "ground_id": 5,},
+        { "id": 31, "culture_id": 14, "ground_id": 6,},
         { "id": 32, "culture_id": 14, "ground_id": 18}, 
-        { "id": 33, "culture_id": 15, "ground_id": 5,}
+        { "id": 33, "culture_id": 15, "ground_id": 5,},
         { "id": 34, "culture_id": 15, "ground_id": 18}, 
-        { "id": 35, "culture_id": 16, "ground_id": 5,}
-        { "id": 36, "culture_id": 16, "ground_id": 6,}
+        { "id": 35, "culture_id": 16, "ground_id": 5,},
+        { "id": 36, "culture_id": 16, "ground_id": 6,},
         { "id": 37, "culture_id": 16, "ground_id": 18}, 
         { "id": 38, "culture_id": 17, "ground_id": 16},
         { "id": 39, "culture_id": 17, "ground_id": 3},
@@ -75,9 +75,9 @@ def GroundCultures():
         { "id": 44, "culture_id": 19, "ground_id": 16}, 
         { "id": 45, "culture_id": 20, "ground_id": 16},
         { "id": 46, "culture_id": 20, "ground_id": 3}, 
-    ]
+    ]  
 
-def GroundCities():
+def getCitiesGroundData():
     return [
         {"id": 1, "ground_id": 3, "city_id": 1},
         {"id": 2, "ground_id": 3, "city_id": 2},
