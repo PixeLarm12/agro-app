@@ -27,14 +27,12 @@ def getGroundsByCity(cityId):
 
     if(cityId): 
         for el in getCitiesGroundData():
-            if int(el["city_id"]) == int(cityId):
+            if int(el["city_id"] == cityId):
                 ground = getGroundById(el["ground_id"])
                 if(ground): 
                     data.append(ground)
 
-        return data
-    else:
-        return None
+    return data
 
 def getCityById(id):
     for city in cities():
@@ -92,56 +90,70 @@ def citiesByCulture(id):
             
     return data
 
+def fetchCultureComercial(culture, period):
+    data = []
+
+    if (culture["period"].find(period) != -1):
+        for row in cities_cultures():
+            if (row["culture_id"] is culture["id"]):
+                city = getCityById(row["city_id"])
+                
+                if(city):
+                    data.append({
+                        "id": city["id"], 
+                        "slug": city["slug"], 
+                        "name": city["name"], 
+                        "state": city["state"], 
+                        "code": city["code"], 
+                        "period": row["period"],
+                        "cultures": [],
+                        "grounds": [],
+                    })
+
+    return data
+
+def fetchCultureGround(culture, period):
+    data = []
+    groundTypesIds = []
+    avoidDuplicatedCities = []
+
+    if(culture["period"].find(period) != -1):
+        for row in getCulturesGroundData():
+            # get specifics types of grounds to plant the given culture
+            if(row["culture_id"] == culture["id"]):
+                groundTypesIds.append(row["ground_id"])
+
+        for row in getCitiesGroundData():    
+            if (row["ground_id"] in groundTypesIds and row["city_id"] not in avoidDuplicatedCities):
+                city = getCityById(row["city_id"])
+
+                if(city):
+                    avoidDuplicatedCities.append(city["id"])
+                    
+                    data.append({
+                        "id": city["id"], 
+                        "slug": city["slug"], 
+                        "name": city["name"], 
+                        "state": city["state"], 
+                        "code": city["code"], 
+                        "period": culture["period"],
+                        "cultures": [],
+                        "grounds": getGroundsByCity(city["id"])
+                    })
+
+    return data
+
 def filterCities(cultureId, period, filterType):
     data = [] 
 
     # show all cities that match cultureId by the most cultivated cultures at given period
     if(isinstance(cultureId, int) and filterType.find("comercial") != -1): 
-        for row in cities_cultures():
-            if (row["culture_id"] is cultureId and row["period"].find(period) != -1):
-                city = getCityById(row["city_id"])
-                
-                if(city):
-                    data.append({
-                         "id": city["id"], 
-                         "slug": city["slug"], 
-                         "name": city["name"], 
-                         "state": city["state"], 
-                         "code": city["code"], 
-                         "period": row["period"],
-                         "cultures": [],
-                         "grounds": [],
-                    })
+        data = fetchCultureComercial(getCultureById(cultureId), period)
     
     # show all cities that are able to plant the selected culture thinking about ground types
     if(isinstance(cultureId, int) and filterType.find("ground") != -1): 
-        culture = getCultureById(cultureId)
-        groundTypesIds = []
-        avoidDuplicatedCities = []
-
-        if(culture):
-            for row in getCulturesGroundData():
-                # get specifics types of grounds to plant the given culture
-                if(int(culture["id"] is int(row["culture_id"]))):
-                    groundTypesIds.append(row["ground_id"])
-
-                for row in getCitiesGroundData():    
-                    if (row["ground_id"] in groundTypesIds and row["city_id"] not in avoidDuplicatedCities):
-                        city = getCityById(row["city_id"])
-
-                        if(city):
-                            avoidDuplicatedCities.append(city["id"])
-                            
-                            data.append({
-                                "id": city["id"], 
-                                "slug": city["slug"], 
-                                "name": city["name"], 
-                                "state": city["state"], 
-                                "code": city["code"], 
-                                "period": culture["period"],
-                                "cultures": [],
-                                "grounds": []
-                            })
+        data = fetchCultureGround(getCultureById(cultureId), period)
+        
 
     # # filter all cultures able in each cities based on comercial data
     # elif(not isinstance(cultureId, int) and filterType.find("comercial") != -1):

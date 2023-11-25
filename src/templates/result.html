@@ -49,11 +49,23 @@
                                         <p class="text-white break-words normal-case">
                                             <!-- doesn't have culture selected, show cultures able in each city -->
                                             {% if city["cultures"]|length > 0 %}
+                                                Culturas disponíveis em {{ city["name"] }}: <br>
+
                                                 {% for cityCultures in city["cultures"] %}
                                                     {% if loop.index == city["cultures"]|length %}
                                                         {{ cityCultures["name"] }}
                                                     {% else %}
                                                         {{ cityCultures["name"] }},
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% elif city["grounds"]|length > 0 %}
+                                                Tipos de solo presente em {{ city["name"] }}: <br>
+
+                                                {% for cityGrounds in city["grounds"] %}
+                                                    {% if loop.index == city["grounds"]|length %}
+                                                        {{ cityGrounds["name"] }}
+                                                    {% else %}
+                                                        {{ cityGrounds["name"] }},
                                                     {% endif %}
                                                 {% endfor %}
                                             {% else %}
