@@ -32,7 +32,7 @@
                         <li class="text-white text-lg">Inicio do plantio: <u class="lowercase">{{ period }}</u></li>
                         <li class="text-white text-lg">Mostrando um total de: <u class="font-bold">{{ cities|length }}</u> cidade (s)</li>
 
-                        {% if culture %}
+                        {% if culture and cities|length > 0 %}
                             {% if isBestPeriod %}
                                 <li class="text-green-500 text-sm italic">Você selecionou o período perfeito para o plantio da {{ culture["name"] }}!</li>
                             {% else %}
@@ -71,9 +71,9 @@
 
                                                 {% for cityGrounds in city["grounds"] %}
                                                     {% if loop.index == city["grounds"]|length %}
-                                                        {{ cityGrounds["name"] }}
+                                                        <i class="text-sm"> {{ cityGrounds["title"] }} </i>
                                                     {% else %}
-                                                        {{ cityGrounds["name"] }},
+                                                        <i class="text-sm"> {{ cityGrounds["title"] }}, </i>
                                                     {% endif %}
                                                 {% endfor %}
                                             {% else %}

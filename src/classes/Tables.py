@@ -30,7 +30,7 @@ def cities():
         {"id": 4, "slug": "santos", "name": "Santos", "state": "SP", "code": 3548500}, 
         {"id": 5, "slug": "miracatu", "name": "Miracatu", "state": "SP", "code": 3529906},
         {"id": 6, "slug": "registro", "name": "Registro", "state": "SP", "code": 3542602},
-        {"id": 7, "slug": "itapeva", "name": "Itapeva", "state": "SP", "code": 3133600},
+        {"id": 7, "slug": "itapeva", "name": "Itapeva", "state": "SP", "code": 3522406},
         {"id": 8, "slug": "apiai", "name": "Apiaí", "state": "SP", "code": 3502705},
         {"id": 9, "slug": "itarare", "name": "Itararé", "state": "SP", "code": 3523206},
         {"id": 10, "slug": "itapetininga", "name": "Itapetininga", "state": "SP", "code": 3522307},

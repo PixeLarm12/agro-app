@@ -19,7 +19,7 @@ def sendSearch():
         filterType = request.form.get("type")
         
         if(period and filterType):
-            return render_template("result.html", culture=getCultureById(cultureId), cities=filterCities(int(cultureId), str(period), str(filterType)), period=period, filterType=filterType, isBestPeriod=isBestPeriod(cultureId, period))
+            return render_template("result.html", culture=getCultureById(cultureId), cities=filterCities(cultureId, str(period), str(filterType)), period=period, filterType=filterType, isBestPeriod=isBestPeriod(cultureId, period))
         
         errors = {
             "message": "Houve erro ao ler o campos do formulário!"
