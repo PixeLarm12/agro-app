@@ -1,4 +1,4 @@
-def getGroundsData():
+def allGrounds():
     return [
         {"id": 1, "title": "Afloramento Rochoso"},
         {"id": 2, "title": "Argissolo Amarelo"},
@@ -27,7 +27,7 @@ def getGroundsData():
         {"id": 25, "title": "Plintossolo Pétrico"},
     ]
 
-def getCulturesGroundData():
+def relationCulturesGrounds():
     return [
         { "id": 1, "culture_id": 1, "ground_id": 18}, 
         { "id": 2, "culture_id": 1, "ground_id": 9}, 
@@ -77,7 +77,7 @@ def getCulturesGroundData():
         { "id": 46, "culture_id": 20, "ground_id": 3}, 
     ]  
 
-def getCitiesGroundData():
+def relationCitiesGround():
     return [
         {"id": 1, "ground_id": 3, "city_id": 1},
         {"id": 2, "ground_id": 3, "city_id": 2},

@@ -1,99 +1,10 @@
-from src.classes.Tables import *
-from src.classes.GroundData import *
-import operator
-
-def Cultures():
-    data = cultures()
-    data.sort(key=operator.itemgetter('name'))
-
-    return data
-
-def getCulturesByCity(cityId):
-    data = []
-
-    if(cityId): 
-        for el in cities_cultures():
-            if int(el["city_id"]) == int(cityId):
-                culture = getCultureById(el["culture_id"])
-                if(culture): 
-                    data.append(culture)
-
-        return data
-    else:
-        return None
-    
-def getGroundsByCity(cityId):
-    data = []
-
-    if(cityId): 
-        for el in getCitiesGroundData():
-            if int(el["city_id"] == cityId):
-                ground = getGroundById(el["ground_id"])
-                if(ground): 
-                    data.append(ground)
-
-    return data
-
-def getCityById(id):
-    for city in cities():
-        if int(city["id"]) == int(id):
-            return city
-    return None
-
-def getCultureById(id):
-    if(id): 
-        for culture in cultures():
-            if int(culture["id"]) == int(id):
-                return culture
-    else:
-        return None
-
-def getGroundById(id):
-    if(id): 
-        for ground in getGroundsData():
-            if int(ground["id"]) == int(id):
-                return ground
-    else:
-        return None
-
-def getCulturesIdsByPeriod(period):
-    data = []
-
-    if(period): 
-        for culture in cultures():
-            if culture["period"].find(period) != -1:
-                data.append(culture["id"])
-    
-    return data
-
-def getCulturesByIdsAndCity(cultureIds, cityId):
-    data = []
-
-    if(len(cultureIds) > 0):
-        for el in cities_cultures():
-            if (el['culture_id'] in cultureIds and el['city_id'] == cityId):
-                data.append(getCultureById(el["culture_id"]))
-
-    return data
-
-def citiesByCulture(id):
-    citiesIds = []
-    data = []
-
-    for row in cities_cultures():
-        if int(row["culture_id"]) == int(id):
-            citiesIds.append(row["city_id"])
-
-    for city in cities():
-        if int(city["id"]) in citiesIds:
-            data.append(city)
-            
-    return data
+from src.classes.controllers.ComercialDataController import *
+from src.classes.controllers.GroundDataController import *
 
 def fetchCultureComercialPerCulture(culture):
     data = []
 
-    for row in cities_cultures():
+    for row in getCitiesCulturesRelation():
         if (row["culture_id"] is culture["id"]):
             city = getCityById(row["city_id"])
             
@@ -116,12 +27,12 @@ def fetchCultureGroundPerCulture(culture):
     groundTypesIds = []
     avoidDuplicatedCities = []
 
-    for row in getCulturesGroundData():
+    for row in getCulturesGroundRelation():
         # get specifics types of grounds to plant the given culture
         if(row["culture_id"] == culture["id"]):
             groundTypesIds.append(row["ground_id"])
 
-    for row in getCitiesGroundData():    
+    for row in getCitiesGroundRelation():    
         if (row["ground_id"] in groundTypesIds and row["city_id"] not in avoidDuplicatedCities):
             city = getCityById(row["city_id"])
 
@@ -148,14 +59,14 @@ def fetchCulturesComercialPerPeriod(period):
 
     
     if(period == "ano todo"):
-        for row in cultures():
+        for row in getAllCultures():
             culturesIds.append(row["id"])
     else: 
-        for row in cultures():
+        for row in getAllCultures():
             if(row["period"].find(period) != -1 or row["period"] is "ano todo"):
                 culturesIds.append(row["id"])
 
-    for row in cities_cultures():
+    for row in getCitiesCulturesRelation():
         if(row["culture_id"] in culturesIds and row["city_id"] not in avoidDuplicatedCities):
             city = getCityById(row["city_id"])
 
@@ -187,18 +98,18 @@ def fetchCulturesGroundPerPeriod(period):
     avoidDuplicatedCities = []
 
     if(period == "ano todo"):
-        for row in cultures():
+        for row in getAllCultures():
             culturesIds.append(row["id"])
     else:
-        for row in cultures():
+        for row in getAllCultures():
             if(row["period"].find(period) != -1 or row["period"] is "ano todo"):
                 culturesIds.append(row["id"])
 
-    for row in getCulturesGroundData():
+    for row in getCulturesGroundRelation():
         if(row["culture_id"] in culturesIds):
             groundsIds.append(row["ground_id"])
 
-    for row in getCitiesGroundData():
+    for row in getCitiesGroundRelation():
         if(row["ground_id"] in groundsIds and row["id"] not in avoidDuplicatedCities):
             city = getCityById(row["id"])
 

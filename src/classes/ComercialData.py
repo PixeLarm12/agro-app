@@ -1,4 +1,4 @@
-def cultures():
+def allCultures():
     return [
         {"id": 1, "name": "Caqui", "period": "junho a julho / dezembro - janeiro"},
         {"id": 2, "name": "Cenoura", "period": "ano todo"},
@@ -22,7 +22,7 @@ def cultures():
         {"id": 20, "name": "Amendoim", "period": "setembro - novembro"}, 
     ]
 
-def cities():
+def allCities():
     return [
         {"id": 1, "slug": "jacarei", "name": "Jacareí", "state": "SP", "code": 3524402},
         {"id": 2, "slug": "sao-paulo", "name": "São Paulo", "state": "SP", "code": 3550308}, 
@@ -82,7 +82,7 @@ def cities():
         {"id": 56, "slug": "branca-paulista", "name": "Bragança Paulista", "state": "SP", "code": 3507605},
     ]
 
-def cities_cultures():
+def relationCitiesCultures():
     return [
         {"id": 1, "city_id": 1, "culture_id": 1, "period": "junho a julho / dezembro - janeiro"},
         {"id": 2, "city_id": 1, "culture_id": 2, "period": "ano todo"},

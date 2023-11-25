@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
-from src.classes.Api import getCultureById, filterCities, Cultures, isBestPeriod
+from src.classes.Api import getCultureById, filterCities, isBestPeriod
+from src.classes.controllers.ComercialDataController import getCulturesAlphaOrdered
 
 app = Flask(__name__)
 
@@ -9,7 +10,7 @@ def index():
 
 @app.route("/search", methods=["GET"])
 def search():
-    return render_template("choose_culture.html", cultures=Cultures(), errors={})
+    return render_template("choose_culture.html", cultures=getCulturesAlphaOrdered(), errors={})
 
 @app.route("/send-search", methods=["POST"])
 def sendSearch():
