@@ -11,10 +11,10 @@
                     <div class="lg:col-span-6 col-span-12">
                         <label for="cultureId" class="font-bold text-xl pl-1 text-amber-400">Selecione uma cultura:</label>
                         <select name="cultureId" id="cultureId" size="10" class="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg w-full p-2.5">
-                            <option value="" default>Selecione (deixe vazio para filtrar apenas por período)</option>
+                            <option value="" selected>Selecione (deixe vazio para filtrar apenas por período)</option>
                             
                             {% for culture in cultures %}
-                            <option class="capitalize" value="{{ culture['id'] }}">{{ loop.index }} - {{ culture['name'] }} (período de plantio: {{ culture['period'] }})</option>
+                                <option value="{{ culture['id'] }}">{{ loop.index }} - {{ culture['name'] }} (Melhor período: {{ culture['period'] }})</option>
                             {% endfor %}
                         </select>
                     </div>
@@ -22,8 +22,7 @@
                     <div class="lg:col-span-6 col-span-12">
                         <label for="period" class="font-bold text-xl pl-1 text-amber-400">Selecione um período:</label>
                         <select name="period" id="period" size="10" class="bg-gray-50 border border-gray-300 text-gray-600 rounded-lg w-full p-2.5">
-                            <option value="" default>Selecione um período...</option>
-                            <option value="ano todo">Ano todo</option>
+                            <option value="ano todo" selected>Qualquer mês</option>
                             <option value="janeiro">Janeiro</option>
                             <option value="fevereiro">Fevereiro</option>
                             <option value="março">Março</option>
@@ -40,13 +39,22 @@
                     </div>
 
                     <div class="col-span-12">
+                        <label class="text-lg text-amber-400 font-bold" for="type">Determine qual a base de dados usar:</label> <br>
+                        <input type="radio" name="type" id="type" value="ground" checked> <span class="text-white"> <b> REGIÃO </b> (melhor local para o plantio da cultura) </span> <br>
+                        <input type="radio" name="type" id="type" value="comercial"> <span class="text-white"> <b> COMÉRCIO </b> (nas culturas mais cultivadas de cada cidade) </span>
+                    </div>
+
+                    <div class="col-span-12">
                         <button type="submit" class="py-4 text-xl font-bold bg-amber-400 w-full rounded-md text-gray-600">ENVIAR</button>
                     </div>
                 </div>
             </form>
         {% else %}
             <div class="flex flex-col justify-center items-center content-center">
-                <h3 class="text-xl text-amber-400 underline break-words">Houve erro: {{ errors }}</h3>
+                <h3 class="text-4xl font-bold uppercase text-amber-400 underline break-words">Erro!</h3>
+                <p class="text-white text-lg break-words">
+                    {{ errors["message"] }}
+                </p>
                 <a class="button-default" href="/">VOLTAR</a>
             </div>
         {% endif %}

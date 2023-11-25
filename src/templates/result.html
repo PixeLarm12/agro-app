@@ -4,10 +4,12 @@
 
 {% block content %}
     <div class="flex flex-col justify-center content-center px-2 lg:items-center">
-        {% if culture %}
-            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Você escolheu cultivar: <u class="uppercase font-bold">{{ culture["name"] }}</u></h1>
-        {% else %}
-            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Veja todas as cidades para plantio no período selecionado</u></h1>
+        {% if culture and filterType == "comercial" %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Dados do cultivo de <span class="lowercase">{{ culture["name"] }} em {{ period }}</span></h1>
+        {% elif culture and filterType == "ground" %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Veja todas as cidades disponíveis para plantio de <span class="lowercase">{{ culture["name"] }} em {{ period }}</span></h1>
+            {% else %}
+            <h1 class="text-3xl text-amber-400 pb-8 font-bold">Veja todas as cidades disponíveis para plantio em <span class="lowercase">{{ period }}</span> no Estado de São Paulo</u></h1>
         {% endif %}
         
         <div class="grid grid-cols-12 gap-4 place-items-center place-content-center lg:w-3/4 w-full">
@@ -27,7 +29,16 @@
                     <h3 class="text-amber-400 font-bold text-xl xl:text-2xl">Dados importantes:</h3>
                 
                     <ul>
-                        <li class="text-white text-lg">Inicio do plantio: <u>{{ period }}</u></li>
+                        <li class="text-white text-lg">Inicio do plantio: <u class="lowercase">{{ period }}</u></li>
+                        <li class="text-white text-lg">Mostrando um total de: <u class="font-bold">{{ cities|length }}</u> cidade (s)</li>
+
+                        {% if culture and cities|length > 0 %}
+                            {% if isBestPeriod %}
+                                <li class="text-green-500 text-sm italic">Você selecionou o período perfeito para o plantio da {{ culture["name"] }}!</li>
+                            {% else %}
+                                <li class="text-red-500 text-sm italic">Atenção! O período selecionado não é o melhor período de plantio de {{ culture["name"] }}! Deveria ser: {{ culture["period"] }}</li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
 
                     <div class="w-full h-full pt-2">
@@ -40,23 +51,36 @@
                                     </p>
                                 </div>
                                 {% for city in cities %}
-                                {% set keyName = city["slug"] + "-card" %}
-                                <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
-                                    <b class="uppercase text-amber-400">{{ city["name"] }}</b><br>
-                                    <p class="text-white break-words normal-case">
-                                        {% if city["cultures"]|length > 0 %}
-                                            {% for cityCultures in city["cultures"] %}
-                                                {% if loop.index == city["cultures"]|length %}
-                                                    {{ cityCultures["name"] }}
-                                                {% else %}
-                                                    {{ cityCultures["name"] }},
-                                                {% endif %}
-                                            {% endfor %}
-                                        {% else %}
-                                            Tempo de plantio: {{ city["period"] }}
-                                        {% endif %}
-                                    </p>
-                                </div>
+                                    {% set keyName = city["slug"] + "-card" %}
+                                    <div id="{{ keyName }}" name="{{ keyName }}" style="display: none; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
+                                        <b class="uppercase text-amber-400">{{ city["name"] }}</b><br>
+                                        <p class="text-white break-words normal-case">
+                                            <!-- doesn't have culture selected, show cultures able in each city -->
+                                            {% if city["cultures"]|length > 0 %}
+                                                Culturas disponíveis em {{ city["name"] }}: <br>
+
+                                                {% for cityCultures in city["cultures"] %}
+                                                    {% if loop.index == city["cultures"]|length %}
+                                                        {{ cityCultures["name"] }}
+                                                    {% else %}
+                                                        {{ cityCultures["name"] }},
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% elif city["grounds"]|length > 0 %}
+                                                Tipos de solo presente em {{ city["name"] }}: <br>
+
+                                                {% for cityGrounds in city["grounds"] %}
+                                                    {% if loop.index == city["grounds"]|length %}
+                                                        <i class="text-sm"> {{ cityGrounds["title"] }} </i>
+                                                    {% else %}
+                                                        <i class="text-sm"> {{ cityGrounds["title"] }}, </i>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% else %}
+                                                Melhor momento para o plantio do (a) <u class="lowercase">{{ culture["name"] }}</u>: {{ city["period"] }}
+                                            {% endif %}
+                                        </p>
+                                    </div>
                                 {% endfor %}
                             </div>
                         {% else %}
@@ -64,7 +88,7 @@
                                 <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
                                     <b class="uppercase text-amber-400">Ops...</b><br>
                                     <p class="text-white break-words normal-case">
-                                        Parece que a cultura que selecionou e o período não coincidem com nenhuma das cidades disponíveis.
+                                        Parece que houve alguma discordância e não temos cidades escolhidas para os resultados.
                                     </p>
                                 </div>
                             </div>
@@ -80,7 +104,7 @@
 
         cities.forEach(city => {
             cityElement = document.querySelector(`#mun_${city.code}`);
-
+            
             if(cityElement) {
                 cityElement.style.fill = '#dc2626';
                 defaultCard = document.getElementById("defaultCityCard");

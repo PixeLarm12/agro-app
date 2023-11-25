@@ -1,4 +1,4 @@
-def cultures():
+def allCultures():
     return [
         {"id": 1, "name": "Caqui", "period": "junho a julho / dezembro - janeiro"},
         {"id": 2, "name": "Cenoura", "period": "ano todo"},
@@ -22,7 +22,7 @@ def cultures():
         {"id": 20, "name": "Amendoim", "period": "setembro - novembro"}, 
     ]
 
-def cities():
+def allCities():
     return [
         {"id": 1, "slug": "jacarei", "name": "Jacareí", "state": "SP", "code": 3524402},
         {"id": 2, "slug": "sao-paulo", "name": "São Paulo", "state": "SP", "code": 3550308}, 
@@ -30,7 +30,7 @@ def cities():
         {"id": 4, "slug": "santos", "name": "Santos", "state": "SP", "code": 3548500}, 
         {"id": 5, "slug": "miracatu", "name": "Miracatu", "state": "SP", "code": 3529906},
         {"id": 6, "slug": "registro", "name": "Registro", "state": "SP", "code": 3542602},
-        {"id": 7, "slug": "itapeva", "name": "Itapeva", "state": "SP", "code": 3133600},
+        {"id": 7, "slug": "itapeva", "name": "Itapeva", "state": "SP", "code": 3522406},
         {"id": 8, "slug": "apiai", "name": "Apiaí", "state": "SP", "code": 3502705},
         {"id": 9, "slug": "itarare", "name": "Itararé", "state": "SP", "code": 3523206},
         {"id": 10, "slug": "itapetininga", "name": "Itapetininga", "state": "SP", "code": 3522307},
@@ -62,7 +62,7 @@ def cities():
         {"id": 36, "slug": "sao-joaquim-da-barra", "name": "São Joaquim da Barra", "state": "SP", "code": 3549409},
         {"id": 37, "slug": "sao-joao-da-boa-vista", "name": "São João da Boa Vista", "state": "SP", "code": 3549102},
         {"id": 38, "slug": "barretos", "name": "Barretos", "state": "SP", "code": 3505500},
-        {"id": 39, "slug": "sertãozinho", "name": "Sertãozinho", "state": "SP", "code": 2515930},
+        {"id": 39, "slug": "sertãozinho", "name": "Sertãozinho", "state": "SP", "code": 3551702},
         {"id": 40, "slug": "jaboticabal", "name": "Jaboticabal", "state": "SP", "code": 3524303},
         {"id": 41, "slug": "taquaritinga", "name": "Taquaritinga", "state": "SP", "code": 3553708},
         {"id": 42, "slug": "catanduva", "name": "Catanduva", "state": "SP", "code": 3511102},
@@ -80,11 +80,9 @@ def cities():
         {"id": 54, "slug": "santo-anastacio", "name": "Santo Anastácio", "state": "SP", "code": 3547700},
         {"id": 55, "slug": "mirante-do-paranapanema", "name": "Mirante do Paranapanema", "state": "SP", "code": 3530201},
         {"id": 56, "slug": "branca-paulista", "name": "Bragança Paulista", "state": "SP", "code": 3507605},
-        {"id": 57, "slug": "piedade", "name": "Piedade", "state": "SP", "code": 3537800},
-        {"id": 58, "slug": "ibiuna", "name": "Ibiúna", "state": "SP", "code": 3519709},
     ]
 
-def cities_cultures():
+def relationCitiesCultures():
     return [
         {"id": 1, "city_id": 1, "culture_id": 1, "period": "junho a julho / dezembro - janeiro"},
         {"id": 2, "city_id": 1, "culture_id": 2, "period": "ano todo"},
@@ -207,8 +205,6 @@ def cities_cultures():
         {"id": 107, "city_id": 2, "culture_id": 18, "period": "ano todo"},
         {"id": 107, "city_id": 19, "culture_id": 18, "period": "ano todo"},
         {"id": 107, "city_id": 11, "culture_id": 18, "period": "ano todo"},
-        {"id": 107, "city_id": 57, "culture_id": 19, "period": "março"},
-        {"id": 107, "city_id": 58, "culture_id": 19, "period": "março"},
         {"id": 107, "city_id": 35, "culture_id": 20, "period": "setembro - novembro"},
         {"id": 107, "city_id": 40, "culture_id": 20, "period": "setembro - novembro"},
     ]
