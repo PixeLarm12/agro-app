@@ -31,6 +31,14 @@
                     <ul>
                         <li class="text-white text-lg">Inicio do plantio: <u class="lowercase">{{ period }}</u></li>
                         <li class="text-white text-lg">Mostrando um total de: <u class="font-bold">{{ cities|length }}</u> cidade (s)</li>
+
+                        {% if culture %}
+                            {% if isBestPeriod %}
+                                <li class="text-green-500 text-sm italic">Você selecionou o período perfeito para o plantio da {{ culture["name"] }}!</li>
+                            {% else %}
+                                <li class="text-red-500 text-sm italic">Atenção! O período selecionado não é o melhor período de plantio de {{ culture["name"] }}! Deveria ser: {{ culture["period"] }}</li>
+                            {% endif %}
+                        {% endif %}
                     </ul>
 
                     <div class="w-full h-full pt-2">
@@ -80,7 +88,7 @@
                                 <div id="defaultCityCard" name="defaultCityCard" style="display: flex; flex-direction: column;" class="w-full h-full justify-center content-center items-center">
                                     <b class="uppercase text-amber-400">Ops...</b><br>
                                     <p class="text-white break-words normal-case">
-                                        Parece que a cultura que selecionou e o período não coincidem com nenhuma das cidades disponíveis.
+                                        Parece que houve alguma discordância e não temos cidades escolhidas para os resultados.
                                     </p>
                                 </div>
                             </div>
