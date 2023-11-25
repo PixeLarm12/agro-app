@@ -62,7 +62,7 @@ def cities():
         {"id": 36, "slug": "sao-joaquim-da-barra", "name": "São Joaquim da Barra", "state": "SP", "code": 3549409},
         {"id": 37, "slug": "sao-joao-da-boa-vista", "name": "São João da Boa Vista", "state": "SP", "code": 3549102},
         {"id": 38, "slug": "barretos", "name": "Barretos", "state": "SP", "code": 3505500},
-        {"id": 39, "slug": "sertãozinho", "name": "Sertãozinho", "state": "SP", "code": 2515930},
+        {"id": 39, "slug": "sertãozinho", "name": "Sertãozinho", "state": "SP", "code": 3551702},
         {"id": 40, "slug": "jaboticabal", "name": "Jaboticabal", "state": "SP", "code": 3524303},
         {"id": 41, "slug": "taquaritinga", "name": "Taquaritinga", "state": "SP", "code": 3553708},
         {"id": 42, "slug": "catanduva", "name": "Catanduva", "state": "SP", "code": 3511102},
@@ -80,8 +80,6 @@ def cities():
         {"id": 54, "slug": "santo-anastacio", "name": "Santo Anastácio", "state": "SP", "code": 3547700},
         {"id": 55, "slug": "mirante-do-paranapanema", "name": "Mirante do Paranapanema", "state": "SP", "code": 3530201},
         {"id": 56, "slug": "branca-paulista", "name": "Bragança Paulista", "state": "SP", "code": 3507605},
-        # {"id": 57, "slug": "piedade", "name": "Piedade", "state": "SP", "code": 3537800},
-        # {"id": 58, "slug": "ibiuna", "name": "Ibiúna", "state": "SP", "code": 3519709},
     ]
 
 def cities_cultures():
@@ -142,8 +140,8 @@ def cities_cultures():
         {"id": 54, "city_id": 14, "culture_id": 10, "period": "outubro"},
         {"id": 55, "city_id": 20, "culture_id": 10, "period": "outubro"},
         {"id": 56, "city_id": 21, "culture_id": 10, "period": "outubro"},
-        # {"id": 57, "city_id": 22, "culture_id": 10, "period": "outubro"},
-        # {"id": 58, "city_id": 23, "culture_id": 10, "period": "outubro"},
+        {"id": 57, "city_id": 22, "culture_id": 10, "period": "outubro"},
+        {"id": 58, "city_id": 23, "culture_id": 10, "period": "outubro"},
         {"id": 59, "city_id": 24, "culture_id": 10, "period": "outubro"},
         {"id": 60, "city_id": 25, "culture_id": 10, "period": "outubro"},
         {"id": 61, "city_id": 26, "culture_id": 10, "period": "outubro"},
@@ -207,8 +205,6 @@ def cities_cultures():
         {"id": 107, "city_id": 2, "culture_id": 18, "period": "ano todo"},
         {"id": 107, "city_id": 19, "culture_id": 18, "period": "ano todo"},
         {"id": 107, "city_id": 11, "culture_id": 18, "period": "ano todo"},
-        # {"id": 107, "city_id": 57, "culture_id": 19, "period": "março"},
-        # {"id": 107, "city_id": 58, "culture_id": 19, "period": "março"},
         {"id": 107, "city_id": 35, "culture_id": 20, "period": "setembro - novembro"},
         {"id": 107, "city_id": 40, "culture_id": 20, "period": "setembro - novembro"},
     ]

@@ -146,9 +146,14 @@ def fetchCulturesComercialPerPeriod(period):
     culturesIds = []
     avoidDuplicatedCities = []
 
-    for row in cultures():
-        if(row["period"].find(period) != -1 or period is "ano todo"):
+    
+    if(period == "ano todo"):
+        for row in cultures():
             culturesIds.append(row["id"])
+    else: 
+        for row in cultures():
+            if(row["period"].find(period) != -1 or row["period"] is "ano todo"):
+                culturesIds.append(row["id"])
 
     for row in cities_cultures():
         if(row["culture_id"] in culturesIds and row["city_id"] not in avoidDuplicatedCities):
@@ -181,9 +186,13 @@ def fetchCulturesGroundPerPeriod(period):
     groundsIds = []
     avoidDuplicatedCities = []
 
-    for row in cultures():
-        if(row["period"].find(period) != -1 or period is "ano todo"):
+    if(period == "ano todo"):
+        for row in cultures():
             culturesIds.append(row["id"])
+    else:
+        for row in cultures():
+            if(row["period"].find(period) != -1 or row["period"] is "ano todo"):
+                culturesIds.append(row["id"])
 
     for row in getCulturesGroundData():
         if(row["culture_id"] in culturesIds):
