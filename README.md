@@ -21,18 +21,12 @@ This project were made to shows where and what are good to plant at Sao Paulo St
 Always run inside (venv)
 
 ### On Linux (some lib, require install once and NodeJS are require to run NPM commands):
-- `npm install -D tailwindcss`
-- `npx tailwindcss init`
-- `sudo apt install python3.8-venv`
-- `npm run buildcss`
 - `python3 -m venv venv`
 - `cd venv`
 - `. bin/activate`
-- `pip install python-dotenv`
 - `cd ..`
-- `pip install flask`
-- `pip install requests`
-- `export FLASK_APP=main.py`
+- `pip install -r requirements.txt`
+- `export FLASK_APP=main.py` 
 - `flask run`
 
 Always run inside (venv)
